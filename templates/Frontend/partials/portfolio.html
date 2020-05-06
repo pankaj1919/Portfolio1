@@ -1,0 +1,64 @@
+{% load static %}
+{% block portfolio %}
+
+<section class="full-page" id="portfolio">
+    <div class="portfolio overlay-container">
+        <div class="kayo-intro-section">
+            <div class="overlay">
+                <div class="section-intro">
+                        <div class="text-center kayo-icon-box-container">
+                            <div class="kayo-icon-box">
+                                <span class="fa fa-laptop kayo-icon"></span>
+                            </div>
+                        </div>
+                        <h1 class="text-center">
+                            PORTFOLIO
+                        </h1>
+                    </div>
+            </div>
+        </div>
+        <div class="port-box">
+            <div class="kayo-container">
+                <div class="mrkayo-main-title">
+                    <h2>
+                        My Work
+                        <span class="kayo-line"></span>
+                    </h2>
+                </div>
+                <div class="text-center">
+                    <ul class="portfolio-sorting list-unstyled text-center kayo-taps">
+                        <li class="active" data-filter="*">All</li>
+                        {% for item in folio  %}
+                        <li data-filter=".{{item.slug}}">{{item.category}}</li>
+                        {% endfor %}
+                    </ul> <!--end portfolio sorting -->
+                </div>
+                <div class="portfolio-items">
+                    <div class="row grid">
+                        {% for item in folio  %}
+                        <div class="col-lg-4 col-md-6 col-sm-6 grid-item {{item.slug}}">
+                            <div class="portfolio-item">
+                                <div class="port-data">
+                                    <div class="port-data-front-card"><i class="fa fa-{{item.icon}}"></i></div>
+                                    <div class="port-data-back-card">
+                                        <h4 class="project-name">{{item.title}}</h4>
+                                        <a href="{{item.link}}" target="_blank" class="port-show-info glyphicon glyphicon-link"></a>
+                                        <div class="project-category">
+                                            <h5>{{item.category}}<i class="fa fa-{{item.icon}} pull-right"></i></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="port-image">
+                                    <img src="{% static 'images/work/01.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div> <!--end row -->
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock portfolio %}
